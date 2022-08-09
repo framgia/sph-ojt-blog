@@ -4,13 +4,16 @@ from django.template.defaultfilters import slugify
 
 # Create your models here.
 class Post(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=255)
     slug = models.SlugField()
     content = models.TextField()
-    excerpt = models.CharField(max_length=150)
-    author = models.CharField(max_length=100)
+    excerpt = models.CharField(max_length=255)
+    author = models.CharField(max_length=30)
     published_at = models.DateTimeField(auto_now_add=True)
     total_votes = models.IntegerField()
+    
+    class Meta:
+        ordering = ['-published_at']
 
     def save(self, *args, **kwargs):
         original_slug = slugify(self.title)
