@@ -20,11 +20,11 @@ class App extends React.Component{
                 {this.state.details.map((output, id) => (
                     <div key={id}>
                         <div>
-                            <h1>Title: {output.title}</h1>
-                            <p>Content: {output.content}</p>
-                            <p>Author: {output.author}</p>
-                            <p>Published: {output.published_at}</p>
-                            <p>Votes: {output.total_votes}</p>
+                            <h3 dangerouslySetInnerHTML={{__html: output.title}} />
+                            <p dangerouslySetInnerHTML={{__html: output.content}} />
+                            <p dangerouslySetInnerHTML={{__html: output.author}} />
+                            <p dangerouslySetInnerHTML={{__html: output.published_at}} />
+                            <p dangerouslySetInnerHTML={{__html: output.total_votes}} />
                         </div>
                     </div>
                 ))}

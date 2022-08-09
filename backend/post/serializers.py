@@ -4,4 +4,5 @@ from .models import Post
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('title', 'content', 'author', 'published_at', 'total_votes')
+        fields = '__all__'
+        lookup_field = 'slug'
