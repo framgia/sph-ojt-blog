@@ -23,8 +23,9 @@ class PostDetailView(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def delete(self, request, *args, **kwargs):
-        post = Post.objects.filter(pk=kwargs['pk'], poster=self.request.user)
+        post = Post.objects.filter(pk=kwargs['pk'], author=self.request.user)
         if post.exists():
             return self.destroy(request, *args, **kwargs)
         else:
             raise ValidationError("This is not your post to delete")
+
