@@ -8,12 +8,12 @@ from .models import Post
 
 # Create your views here.
 class PostView(viewsets.ModelViewSet):
-    queryset = Post.objects
+    queryset = Post.objects.all()
     serializer_class = PostSerializer
     lookup_field = 'slug'
 
 class PostDetailView(viewsets.ModelViewSet):
-    queryset = Post.objects
+    queryset = Post.objects.all()
     serializer_class = PostSerializer
     lookup_field = 'slug'
 
