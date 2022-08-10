@@ -28,3 +28,4 @@ class PostDetailView(viewsets.ModelViewSet):
             return self.destroy(request, *args, **kwargs)
         else:
             raise ValidationError("This is not your post to delete")
+
