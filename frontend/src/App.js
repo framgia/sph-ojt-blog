@@ -7,7 +7,7 @@ class App extends React.Component {
 		return (
 			<Routes>
 				<Route path='/' element={<HomePage />} />
-				<Route path='/blogs/:id' element={<BlogDetail />} />
+				<Route path='/posts/:slug' element={<BlogDetail />} />
 			</Routes>
 		);
 	}

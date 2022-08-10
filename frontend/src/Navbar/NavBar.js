@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './NavBar.css';
 const NavBar = () => {
 	const navigate = useNavigate();
+
 	return (
 		<>
 			<div className='ui fluid secondary pointing menu'>
