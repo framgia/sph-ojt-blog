@@ -1,49 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import NavBar from "../Template/NavBar"
-import Footer from "../Template/Footer"
-import API from "../API";
-import Comments from "./Comments"
+import { useParams, useNavigate } from "react-router-dom";
+import API from "../../API";
+import Comments from "./Comments";
+import { getDate } from "../../Helpers/getDate";
 
 const BlogDetail = () => {
   const [post, setPost] = useState([]);
   const { slug: postSlug } = useParams();
-
+  let navigate = useNavigate();
 
   useEffect(() => {
     API.get(`/posts/${postSlug}/`)
       .then((res) => setPost(res.data))
-      .catch((err) => {
-        console.log(err.response.status);
-        if (err.response.status === 404) {
-          window.location.href = "/notfound";
-          return;
-        }
-      });
-  }, [postSlug]);
-
-  const getDate = () => {
-    const date = new Date(post.published_at);
-    const options = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-  
-    return date.toLocaleString("en-US", options);
-  };
+      .catch(() => navigate("/404"));
+  }, [postSlug, navigate]);
 
   return (
     <div>
       <div>
-        <NavBar />
       </div>
       <div className="ui raised very padded text container">
         <div>
-          <h4 className="ui left aligned sub header">{getDate()}</h4>
+          <h4 className="ui left aligned sub header">{getDate(post.published_at)}</h4>
           <h1 className="ui left aligned header">{post.title}</h1>
-          <p className="ui left aligned" style={{fontSize:"1em"}}>Posted by {post.author}</p>
+          <p className="ui left aligned" style={{ fontSize: "1em" }}>
+            Posted by {post.author}
+          </p>
         </div>
         <div className="ui hidden divider"></div>
         <div className="ui left aligned text container segment ">
@@ -71,7 +53,6 @@ const BlogDetail = () => {
         <div className="ui hidden divider" />
         <Comments />
       </div>
-	  <Footer />
     </div>
   );
 };
