@@ -1,8 +1,8 @@
 import React from 'react';
 // import BlogDetail from './BlogDetail/BlogDetail';
 import { Route, Routes } from 'react-router-dom';
-import HomePage from './components/HomePage/HomePage';
-import PageNotFound from './components/404 Page/PageNotFound';
+import HomePage from './pages/HomePage/HomePage';
+import PageNotFound from './pages/404 Page/PageNotFound';
 import Template from './components/Template/Template';
 class App extends React.Component {
 	render() {

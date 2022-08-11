@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { getDate } from "../../Helpers/getDate";
-import { getTitle } from "../../Helpers/getTitle";
-import { getContent } from "../../Helpers/getContent";
+import { getDate } from "../../helpers/getDate";
+import { getTitle } from "../../helpers/getTitle";
+import { getContent } from "../../helpers/getContent";
 
 const ListItem = ({ post }) => {
   return (

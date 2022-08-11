@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import API from "../../API";
 import Comments from "./Comments";
-import { getDate } from "../../Helpers/getDate";
+import { getDate } from "../../helpers/getDate";
 
 const BlogDetail = () => {
   const [post, setPost] = useState([]);
