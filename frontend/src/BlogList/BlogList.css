@@ -1,0 +1,21 @@
+.ui.center.aligned.text.container {
+	font-style: normal;
+	font-size: larger;
+}
+h1 {
+	color: red;
+	font-size: 50px;
+}
+.ui.center.container {
+	padding: 20px;
+}
+.ui.center.aligned.container {
+	justify-content: center;
+	padding: 20px;
+}
+
+div.ui.pagination.menu {
+	height: fit-content;
+	width: fit-content;
+	align-self: center;
+}

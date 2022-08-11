@@ -6,10 +6,12 @@ const NavBar = () => {
 	return (
 		<>
 			<div className='ui fluid secondary pointing menu'>
-				<div className='item active' onClick={() => navigate('/')}>
+				<div className='item' onClick={() => navigate('/')}>
 					Home
 				</div>
-				<div className='item'>All Blogs</div>
+				<div className='item active' onClick={() => navigate('/posts')}>
+					All Blogs
+				</div>
 			</div>
 
 			<div className='ui hidden divider'></div>
