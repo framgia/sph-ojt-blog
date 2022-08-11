@@ -17,7 +17,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             'password': {
                 'write_only': True, 
                 'style': {'input_type': 'password'},
-                'max_length': 30,
+                'max_length': 50,
                 },
             'email': {
                 'validators': [
@@ -25,10 +25,10 @@ class RegisterSerializer(serializers.ModelSerializer):
                     queryset=User.objects.all()
                 )
                 ],
-                'max_length': 30,
+                'max_length': 50,
             },
             'username':{
-                'max_length': 30,
+                'max_length': 50,
                 'help_text': None,
             }
         }
