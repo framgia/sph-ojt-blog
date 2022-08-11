@@ -1,7 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
-
 from rest_framework import generics, permissions
 from rest_framework.response import Response
 from knox.models import AuthToken
@@ -14,14 +11,14 @@ class RegisterAPI(generics.GenericAPIView):
 
     permission_classes = (permissions.AllowAny,)
     http_method_names = ['get', 'head', 'post']
-
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
+
         return Response({
-        "user": UserSerializer(user, context=self.get_serializer_context()).data,
-        "token": AuthToken.objects.create(user)[1]
+            "user": UserSerializer(user, context=self.get_serializer_context()).data,
+            "token": AuthToken.objects.create(user)[1]
         })
 
     def get(self, request, format=None):
