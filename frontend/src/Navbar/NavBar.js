@@ -8,7 +8,7 @@ import FormSuccess from '../RegistrationPage/FormSuccess';
 const NavBar = () => {
 	const navigate = useNavigate();
 	const [isSubmitted, setIsSubmitted] = useState(false);
-	const [open, setOpen] = React.useState(false)
+	const [open, setOpen] = useState(false)
 
 	function submitForm() {
 		setIsSubmitted(true);

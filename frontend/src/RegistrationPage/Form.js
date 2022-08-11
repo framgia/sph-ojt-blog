@@ -33,6 +33,4 @@ const Registration_Page = () => {
   );
 };
 
-
-
 export default Registration_Page;
