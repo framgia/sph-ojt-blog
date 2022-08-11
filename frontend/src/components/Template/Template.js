@@ -1,13 +1,12 @@
 import React from 'react'
-import BlogDetail from '../../pages/BlogDetail/BlogDetail'
 import Footer from './Footer'
 import NavBar from './NavBar'
 
-const Template = () => {
+const Template = ({children}) => {
   return (
     <div>
         <NavBar />
-        <BlogDetail />
+        {children}
         <Footer />
     </div>
   )

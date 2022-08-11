@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import API from "../../API";
 import Comments from "./Comments";
 import { getDate } from "../../helpers/getDate";
+import Template from "../../components/Template/Template";
 
 const BlogDetail = () => {
   const [post, setPost] = useState([]);
@@ -16,12 +17,12 @@ const BlogDetail = () => {
   }, [postSlug, navigate]);
 
   return (
-    <div>
-      <div>
-      </div>
+    <Template>
       <div className="ui raised very padded text container">
         <div>
-          <h4 className="ui left aligned sub header">{getDate(post.published_at)}</h4>
+          <h4 className="ui left aligned sub header">
+            {getDate(post.published_at)}
+          </h4>
           <h1 className="ui left aligned header">{post.title}</h1>
           <p className="ui left aligned" style={{ fontSize: "1em" }}>
             Posted by {post.author}
@@ -53,7 +54,7 @@ const BlogDetail = () => {
         <div className="ui hidden divider" />
         <Comments />
       </div>
-    </div>
+    </Template>
   );
 };
 

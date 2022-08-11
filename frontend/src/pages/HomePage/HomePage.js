@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from "react";
 import API from "../../API";
-import NavBar from "../../components/Template/NavBar"
 import ListItem from "../../components/ListItem/ListItem";
+import Template from "../../components/Template/Template";
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     API.get("/posts/")
-      .then((res) => setPosts(res.data))
+      .then((res) => setPosts(res.data.results))
       .catch((err) => console.log(err));
   }, []);
 
   return (
-    <div>
-      <div>
-        <NavBar />
-      </div>
+    <Template>
       {posts.map((post, index) => (
         <ListItem key={index} post={post} />
       ))}
-    </div>
+    </Template>
   );
 };
 
