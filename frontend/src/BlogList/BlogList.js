@@ -1,4 +1,5 @@
 import React from 'react';
+
 import PaginationList from './PaginationList';
 import NavBar from '../Navbar/NavBar';
 import BlogContainer from './BlogContainer';
@@ -24,4 +25,5 @@ const BlogList = () => {
 		</div>
 	);
 };
+
 export default BlogList;
