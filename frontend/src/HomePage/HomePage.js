@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import API from "../API";
-import NavBar from "../Navbar/NavBar";
+import NavBar from "../Template/NavBar"
 import ListItem from "../ListItem/ListItem";
 
 const HomePage = () => {
