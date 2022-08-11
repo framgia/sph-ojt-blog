@@ -1,3 +1,5 @@
 django-cors-headers
 djangorestframework
 django-summernote
+django-rest-knox
+django-seed
