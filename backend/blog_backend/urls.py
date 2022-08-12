@@ -24,6 +24,7 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter()
 router.register(r'posts', views.PostView, 'post')
 router.register(r'postdetails', views.PostDetailView, 'postdetail')
+router.register(r'comments', views.CommentView, 'comment')
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
