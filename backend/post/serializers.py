@@ -6,3 +6,4 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = '__all__'
         lookup_field = 'slug'
+        
