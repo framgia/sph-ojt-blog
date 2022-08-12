@@ -52,9 +52,6 @@ class Comment(models.Model):
     content = models.TextField()
     published_at = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        ordering = ('published_at',)
-
     def __str__(self):
         return f"{self.post_fk.title} - {self.author}"
 
