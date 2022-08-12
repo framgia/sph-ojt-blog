@@ -1,24 +1,61 @@
 .ui.fluid.secondary.pointing.menu {
-	justify-content: center;
+  justify-content: center;
 }
 
 .signup-btn {
-	position: absolute;
-	right: 10px;
-	top: 3px;
-	width: 8%;
-	height: 32px;
-	border-radius: 10px;
-	padding-bottom: 5%;
-	outline: none;
-	border: none;
-	color: #fff;
-	font-size: 1rem;
-	text-align: start;
-  }
+  position: absolute;
+  right: 10px;
+  top: 3px;
+  width: 8%;
+  height: 32px;
+  border-radius: 10px;
+  padding-bottom: 5%;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  text-align: start;
+}
 
-  .signup-btn:hover {
-	cursor: pointer;
-	background: rgb(212, 34, 34);
-	transition: all 0.4s ease-out;
-  }
+.signup-btn:hover {
+  cursor: pointer;
+  background: rgb(212, 34, 34);
+  transition: all 0.4s ease-out;
+}
+
+.sign-up-form-container {
+  margin: auto;
+  width: 900px;
+  /* box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2); */
+  position: relative;
+  border-radius: 10px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.sign-up-form-content-left {
+  background: white;
+  border-radius: 10px 0 0 10px;
+  position: relative;
+}
+
+.sign-up-form-img {
+  width: 500px;
+  height: 100%;
+  position: absolute;
+  border-radius: 5px 0 0 5px;
+  top: 50%;
+  left: 100px;
+  transform: translate(-50%, -50%);
+}
+
+.close-btn {
+  position: absolute;
+  top: 2%;
+  right: 3%;
+  font-size: 1.5rem;
+  z-index: 1;
+  color: white;
+  cursor: pointer;
+}
