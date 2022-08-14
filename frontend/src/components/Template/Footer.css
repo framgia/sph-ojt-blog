@@ -5,6 +5,7 @@
   width: 100%;
   text-align: center;
   background-color: black;
+  z-index: 5;
 }
 
 .footer p {
