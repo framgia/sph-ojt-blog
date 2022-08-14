@@ -18,7 +18,10 @@ const BlogDetail = () => {
 
   return (
     <Template>
-      <div className="ui raised very padded text container" style={{paddingBottom: "120px"}}>
+      <div
+        className="ui raised very padded text container"
+        style={{ paddingBottom: "120px" }}
+      >
         <div>
           <h4 className="ui left aligned sub header">
             {getDate(post.published_at)}
@@ -28,7 +31,9 @@ const BlogDetail = () => {
             Posted by {post.author}
           </p>
         </div>
+
         <div className="ui hidden divider" />
+
         <div className="ui left aligned text container segment ">
           <div className="ui ">
             <div className="image header">
@@ -36,7 +41,10 @@ const BlogDetail = () => {
               <div className="line"></div>
             </div>
             <div className="paragraph">
-              <p style={{fontSize:"18px"}} dangerouslySetInnerHTML={{ __html: post.content }} />
+              <p
+                style={{ fontSize: "18px" }}
+                dangerouslySetInnerHTML={{ __html: post.content }}
+              />
             </div>
           </div>
         </div>
