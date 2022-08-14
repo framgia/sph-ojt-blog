@@ -22,7 +22,7 @@ const ListItem = ({ posts, loading }) => {
                 <Card.Header as="h1" className={styles.listHeader}>
                   {getTitle(post.title)}
                 </Card.Header>
-                <div class="ui fitted divider" />
+                <div className="ui fitted divider" />
                 <Card.Meta>Posted by {post.author}</Card.Meta>
                 <Card.Description className={styles.listContent}>
                   <p

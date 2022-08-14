@@ -4,11 +4,11 @@ import Template from "../../components/Template/Template";
 import useFetch from "../../helpers/useFetch";
 
 const HomePage = () => {
-  const { data } = useFetch("/posts/");
+  const { data, loading } = useFetch("/posts/");
 
   return (
     <Template>
-      <ListItem posts={data} />
+      <ListItem posts={data} loading={loading} />
     </Template>
   );
 };

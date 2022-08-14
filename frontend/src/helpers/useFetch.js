@@ -7,21 +7,20 @@ const useFetch = (url) => {
 
   const [activePage, setActivePage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
-      API.get(apiUrl)
-        .then(
-          (res) => (
-            setData(res.data.results),
-            setPageCount(Math.ceil(res.data.count / 5)),
-            setLoading(false)
-          )
-        )
-        .catch((err) => console.log(err));
+      try {
+        const { data: res } = await API.get(apiUrl);
+        setData(res.results);
+        setPageCount(Math.ceil(res.count / 5));
+        setLoading(false);
+      } catch (err) {
+        console.log(err);
+      }
     };
+
     fetchData();
   }, [url, apiUrl]);
 
