@@ -16,11 +16,11 @@ const useFetch = (url) => {
         .then(
           (res) => (
             setData(res.data.results),
-            setPageCount(Math.ceil(res.data.count / 5))
+            setPageCount(Math.ceil(res.data.count / 5)),
+            setLoading(false)
           )
         )
         .catch((err) => console.log(err));
-      setLoading(false);
     };
     fetchData();
   }, [url, apiUrl]);
