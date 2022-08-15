@@ -1,10 +1,10 @@
 import React from 'react';
-import BlogDetail from './pages/BlogDetail/BlogDetail';
 import { Route, Routes } from 'react-router-dom';
 
 import HomePage from './pages/HomePage/HomePage';
 import PageNotFound from './pages/404 Page/PageNotFound';
 import BlogList from './pages/BlogList/BlogList';
+import BlogDetail from './pages/BlogDetail/BlogDetail';
 
 const App = () => {
 	return (
