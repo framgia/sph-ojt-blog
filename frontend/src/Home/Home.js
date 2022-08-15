@@ -13,7 +13,7 @@ function Home(){
             <div>
                <NavBar /> 
             </div>
-            <div>
+            <div className='post-matters'>
                 <h1 className='ui center aligned header'>"POSTS THAT MATTERS"</h1>
             </div>
           
