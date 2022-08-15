@@ -5,18 +5,17 @@ import HomePage from './pages/HomePage/HomePage';
 import PageNotFound from './pages/404 Page/PageNotFound';
 import BlogList from './pages/BlogList/BlogList';
 
-class App extends React.Component {
-	render() {
-		return (
-			<Routes>
-				<Route path='/' element={<HomePage />} />
-				<Route path='/posts/:slug' element={<BlogDetail />} />
-				<Route path="*" element={<PageNotFound />} />
-				<Route path="/404" element={<PageNotFound />} />
-				<Route path='/posts' element={<BlogList />} />
-			</Routes>
-		);
-	}
+const App = () => {
+	return (
+		<Routes>
+			<Route path='/' element={<HomePage />} />
+			<Route path='/posts/:slug' element={<BlogDetail />} />
+			<Route path="*" element={<PageNotFound />} />
+			<Route path="/404" element={<PageNotFound />} />
+			<Route path='/posts' element={<BlogList />} />
+			
+		</Routes>
+	);
 }
 
 export default App;
