@@ -6,8 +6,6 @@ const Loader = () => {
       <div className="ui active inverted dimmer">
         <div className="ui medium text loader">Loading</div>
       </div>
-      <p></p>
-      <p></p>
     </div>
   );
 };
