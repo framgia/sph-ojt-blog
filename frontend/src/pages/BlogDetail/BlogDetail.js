@@ -11,7 +11,7 @@ const BlogDetail = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    API.get(`/posts/${postSlug}/`)
+    API.get(`/postdetails/${postSlug}/`)
       .then((res) => setPost(res.data))
       .catch(() => navigate("/404"));
   }, [postSlug, navigate]);
