@@ -11,19 +11,8 @@ class DummyUser(models.Model):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
-class Comment(models.Model):
-    author_fk = models.ForeignKey(
-            DummyUser, on_delete=models.CASCADE, related_name='comment_author', default=None)
-    content = models.TextField()
-    published_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        ordering = ('-published_at',)
-
-class Vote(models.Model):
-    author_fk = models.ForeignKey(
-            DummyUser, on_delete=models.CASCADE, related_name='voter', default=None)
-    total_votes = models.IntegerField()
+    # def save(self, *args, **kwargs):
+    #     super(Comment, self).save(*args, **kwargs)
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -32,20 +21,9 @@ class Post(models.Model):
     excerpt = models.CharField(max_length=150)
     author = models.CharField(max_length=100)
     published_at = models.DateTimeField(auto_now_add=True)
-    comment_fk = models.ManyToManyField(
-                Comment, blank=True)
-    vote_fk = models.ManyToManyField(
-            Vote, blank=True)
 
-    # This refers to the comment
-    @property
-    def comment_content(self):
-        return self.comment_fk.content
-
-    # This refers to the upvote
-    @property
-    def no_of_upvotes(self):
-        return self.vote_fk.total_votes
+    class Meta:
+        ordering = ('published_at',)
 
     def save(self, *args, **kwargs):
         original_slug = slugify(self.title)
@@ -64,3 +42,24 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    post_fk = models.ForeignKey(
+            Post, on_delete=models.CASCADE, related_name='post_comments')
+    #author_fk = models.ForeignKey(
+    #        DummyUser, on_delete=models.CASCADE, related_name='comment_author', default=None, blank=True)
+    author = models.CharField(max_length=255, default="Anonymous")
+    content = models.TextField()
+    published_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.post_fk.title} - {self.author}"
+
+
+class Vote(models.Model):
+    post_fk = models.ForeignKey(
+            Post, on_delete=models.CASCADE, related_name='post_votes')
+    voter_fk = models.ForeignKey(
+            DummyUser, on_delete=models.CASCADE, related_name='voter', default=None)
+    total_votes = models.IntegerField()
+
