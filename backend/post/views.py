@@ -12,6 +12,7 @@ class PostView(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     pagination_class = CustomPageNumberPagination
+    lookup_field = 'slug'
 
 class PostDetailView(viewsets.ModelViewSet):
     queryset = Post.objects.all()
