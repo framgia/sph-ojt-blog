@@ -1,9 +1,10 @@
 import React from 'react';
-import NavBar from '../Navbar/NavBar';
 import { Grid, Placeholder, Segment } from 'semantic-ui-react'
+
+import NavBar from '../Navbar/NavBar';
 import './Home.css';
 
-function Home(){
+const Home = () => {
     return (
         <div>
             <div className='auth-button'>
@@ -13,6 +14,7 @@ function Home(){
             <div>
                <NavBar /> 
             </div>
+
             <div className='post-matters'>
                 <h1 className='ui center aligned header'>"POSTS THAT MATTERS"</h1>
             </div>
@@ -139,5 +141,6 @@ function Home(){
         </div>
     );
 }
+
 
 export default Home
