@@ -1,17 +1,17 @@
 
-.auth-button{
+.auth-button {
     margin-top: 10px;
     margin-right: 10px;
 }
 
-.featured-article{
+.featured-article {
     display:flex;
     justify-content: center;
     align-items: center;
     margin-top: 100px;
 }
 
-.featured-article-photo{
+.featured-article-photo {
     width: 495px;
     height: 320px;
     border: 5px solid gray;
@@ -19,25 +19,25 @@
     margin-right: 52px;
 }
 
-.featured-article-title{
+.featured-article-title {
     font-size: 30px;
     font-style: bold;
     margin-top: 10px;
     margin-bottom: 20px;
 }
 
-.featured-article-desc{
+.featured-article-desc {
     width: 713px;
     height: 70px;
     margin-bottom: 70px;
  
 }
 
-.featured-article-author{
+.featured-article-author {
     display:inline-flex;
 }
 
-.avatar{
+.avatar {
     width: 50px;
     height: 50px;
     border-radius: 100%;
@@ -45,11 +45,11 @@
     margin-right: 20px;
 }
 
-.placholders-temp{
+.placholders-temp {
     margin-left: 100px;
     margin-right: 100px;
 }
 
-.post-matters{
+.post-matters {
     margin-top: 20px;
 }
