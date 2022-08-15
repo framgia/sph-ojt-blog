@@ -6,9 +6,10 @@ from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from rest_framework import permissions
-from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 from . import serializers
+from rest_framework.authentication import TokenAuthentication
+
 
 # Register API
 class RegisterAPI(generics.GenericAPIView):
@@ -37,7 +38,7 @@ class LoginAPI(KnoxLoginView):
     serializer_class = LoginSerializer
     # This view should be accessible also for unauthenticated users.
     permission_classes = (permissions.AllowAny,)
-
+    authentication_classes = (TokenAuthentication,)
     def post(self, request, format=None):
         serializer = serializers.LoginSerializer(data=self.request.data,
             context={ 'request': self.request })
@@ -45,13 +46,3 @@ class LoginAPI(KnoxLoginView):
         user = serializer.validated_data['user']
         login(request, user)
         return super(LoginAPI, self).post(request, format=None)
-
-"""class LoginAPI(KnoxLoginView):
-    permission_classes = (permissions.AllowAny,)
-
-    def post(self, request, format=None):
-        serializer = AuthTokenSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        user = serializer.validated_data['user']
-        login(request, user)
-        return super(LoginAPI, self).post(request, format=None)"""
