@@ -24,11 +24,13 @@ from django.conf.urls.static import static
 router = routers.DefaultRouter()
 router.register(r'posts', views.PostView, 'post')
 router.register(r'postdetails', views.PostDetailView, 'postdetail')
+router.register(r'comments', views.CommentView, 'comment')
 
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('summernote/', include('django_summernote.urls')),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('', include('registration.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

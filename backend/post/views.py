@@ -2,14 +2,16 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
-from .serializers import PostSerializer
-from .models import Post
+from .serializers import PostSerializer, CommentSerializer
+from .models import Post, Comment
+from .pagination import CustomPageNumberPagination
 
 
 # Create your views here.
 class PostView(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    pagination_class = CustomPageNumberPagination
     lookup_field = 'slug'
 
 class PostDetailView(viewsets.ModelViewSet):
@@ -29,3 +31,10 @@ class PostDetailView(viewsets.ModelViewSet):
         else:
             raise ValidationError("This is not your post to delete")
 
+class CommentView(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+    def get_queryset(self):
+        query = self.request.query_params.dict()
+        return self.queryset.filter(**query)

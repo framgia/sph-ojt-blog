@@ -1,19 +1,22 @@
 import React from 'react';
-import BlogDetail from './BlogDetail/BlogDetail';
+import BlogDetail from './pages/BlogDetail/BlogDetail';
 import { Route, Routes } from 'react-router-dom';
 
-import LogInPage from './LogInPage/LogInPage';
+import HomePage from './pages/HomePage/HomePage';
+import PageNotFound from './pages/404 Page/PageNotFound';
+import BlogList from './pages/BlogList/BlogList';
 
-class App extends React.Component {
-	render() {
-		return (
-			<Routes>
-				<Route path='/' element={<LogInPage />} />
-				
-				<Route path='/blogs/:id' element={<BlogDetail />} />
-			</Routes>
-		);
-	}
+const App = () => {
+	return (
+		<Routes>
+			<Route path='/' element={<HomePage />} />
+			<Route path='/posts/:slug' element={<BlogDetail />} />
+			<Route path="*" element={<PageNotFound />} />
+			<Route path="/404" element={<PageNotFound />} />
+			<Route path='/posts' element={<BlogList />} />
+			
+		</Routes>
+	);
 }
 
 export default App;

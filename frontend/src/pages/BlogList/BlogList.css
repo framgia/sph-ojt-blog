@@ -1,0 +1,24 @@
+.ui.center.aligned.text.container {
+	font-style: normal;
+	font-size: larger;
+}
+
+.bloglist-h1 {
+	color: #D21612;
+	font-size: 50px;
+}
+
+.ui.center.container {
+	padding: 20px;
+}
+
+.ui.center.aligned.container {
+	justify-content: center;
+	padding: 20px;
+}
+
+div.ui.pagination.menu {
+	height: fit-content;
+	width: fit-content;
+	align-self: center;
+}
