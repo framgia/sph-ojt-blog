@@ -1,22 +1,14 @@
-import React, { useState, useEffect } from "react";
-import API from "../../API";
+import React from "react";
 import ListItem from "../../components/ListItem/ListItem";
 import Template from "../../components/Template/Template";
+import useFetch from "../../helpers/useFetch";
 
 const HomePage = () => {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    API.get("/posts/")
-      .then((res) => setPosts(res.data.results))
-      .catch((err) => console.log(err));
-  }, []);
+  const { data, loading } = useFetch("/posts/");
 
   return (
     <Template>
-      {posts.map((post, index) => (
-        <ListItem key={index} post={post} />
-      ))}
+      <ListItem posts={data} loading={loading} />
     </Template>
   );
 };
