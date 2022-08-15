@@ -1,9 +1,13 @@
 from django.shortcuts import render
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, views, status
 from rest_framework.response import Response
 from knox.models import AuthToken
-from .serializers import UserSerializer, RegisterSerializer
+from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from . import serializers
+from .models import RegisteredUser
+
 
 # Register API
 class RegisterAPI(generics.GenericAPIView):
@@ -27,3 +31,16 @@ class RegisterAPI(generics.GenericAPIView):
         return Response(serializer.data)
     
     queryset = User.objects.all()
+
+class LoginAPI(views.APIView):
+    serializer_class = LoginSerializer
+    # This view should be accessible also for unauthenticated users.
+    permission_classes = (permissions.AllowAny,)
+    http_method_names = ['head', 'post']
+    def post(self, request, *args, **kwargs):
+        serializer = serializers.LoginSerializer(data=self.request.data,
+            context={ 'request': self.request })
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        login(request, user)
+        return Response(None, status=status.HTTP_202_ACCEPTED)
