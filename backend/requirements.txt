@@ -3,3 +3,4 @@ djangorestframework
 django-summernote
 django-rest-knox
 django-seed
+django-filter
