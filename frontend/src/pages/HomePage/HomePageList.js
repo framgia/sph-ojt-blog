@@ -3,15 +3,10 @@ import { Link } from "react-router-dom";
 import { getDate } from "../../helpers/getDate";
 import { getTitle } from "../../helpers/getTitle";
 import { getContent } from "../../helpers/getContent";
-import Loader from "../../components/Loader/Loader";
 import { Card } from "semantic-ui-react";
 import styles from "./styles.module.css";
 
-const HomePageList = ({ posts, loading }) => {
-  if (loading) {
-    return <Loader />;
-  }
-
+const HomePageList = ({ posts }) => {
   return (
     <>
       <Link to={`/posts/${posts[0].slug}`} style={{ color: "black" }}>
