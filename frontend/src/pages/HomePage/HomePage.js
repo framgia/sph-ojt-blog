@@ -1,136 +1,24 @@
 import React from "react";
-import { Grid, Placeholder, Segment } from 'semantic-ui-react'
+import "./HomePage.css";
 
-import './HomePage.css';
-import NavBar from "../../components/Template/NavBar";
+import Template from "../../components/Template/Template";
+import Loader from "../../components/Loader/Loader";
+import HomePageList from "./HomePageList";
+import useFetch from "../../helpers/useFetch";
 
 const HomePage = () => {
-
+  const { data, loading } = useFetch("/posts/");
   return (
-    <div>
-      <NavBar />
-      <div className='post-matters'>
-        <h1 className='ui center aligned header'>"POSTS THAT MATTERS"</h1>
-      </div>
-      <div className='featured-article'>
-        <div className='featured-article-photo'>
-        </div>
-        <div className='fetuared-article-details'>
-          <div className='featured-article-title'>Article Title</div>
-          <div className='featured-article-desc'>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nec pretium tellus. Integer pulvinar, odio pharetra bibendum commodo, velit nibh dignissim turpis, ac mollis eros eros et risus. Duis tempus quam magna, eget vestibulum nibh gravida ut. Vivamus non velit nulla. Duis a efficitur mi. Cras tincidunt a dolor sagittis pellentesque. Sed dapibus, eros non commodo lobortis, velit nisl porta enim, vitae malesuada justo libero faucibus ante.</div>
-          <div className='featured-article-author'>
-            <div className='avatar'></div>
-            <div className='author'>
-              <div>Username</div>
-              <div>08/11/22</div>
-            </div>
-          </div>
+    <Template>
+      <div className="post-matters">
+        <div className="ui center aligned header">
+          <h1 className="homeLogoName">SunPosterisk*</h1>
         </div>
       </div>
-      <div className='ui hidden divider'></div>
-      <div className='ui hidden divider'></div>
-      <div className='ui hidden divider'></div>
-      <div className='ui hidden divider'></div>
-      <div className='ui hidden divider'></div>
-      <div className='ui hidden divider'></div>
       <div className="placholders-temp">
-        <Grid columns={3} stackable>
-          <Grid.Column>
-            <Segment raised>
-              <Placeholder>
-                <Placeholder.Header image>
-                  <Placeholder.Line />
-                  <Placeholder.Line />
-                </Placeholder.Header>
-                <Placeholder.Paragraph>
-                  <Placeholder.Line length='medium' />
-                  <Placeholder.Line length='short' />
-                </Placeholder.Paragraph>
-              </Placeholder>
-            </Segment>
-          </Grid.Column>
-
-          <Grid.Column>
-            <Segment raised>
-              <Placeholder>
-                <Placeholder.Header image>
-                  <Placeholder.Line />
-                  <Placeholder.Line />
-                </Placeholder.Header>
-                <Placeholder.Paragraph>
-                  <Placeholder.Line length='medium' />
-                  <Placeholder.Line length='short' />
-                </Placeholder.Paragraph>
-              </Placeholder>
-            </Segment>
-          </Grid.Column>
-
-          <Grid.Column>
-            <Segment raised>
-              <Placeholder>
-                <Placeholder.Header image>
-                  <Placeholder.Line />
-                  <Placeholder.Line />
-                </Placeholder.Header>
-                <Placeholder.Paragraph>
-                  <Placeholder.Line length='medium' />
-                  <Placeholder.Line length='short' />
-                </Placeholder.Paragraph>
-              </Placeholder>
-            </Segment>
-          </Grid.Column>
-        </Grid>
+        {loading ? <Loader /> : <HomePageList posts={data} />}
       </div>
-
-      <div className='placholders-temp'>
-        <Grid columns={3} stackable>
-          <Grid.Column>
-            <Segment raised>
-              <Placeholder>
-                <Placeholder.Header image>
-                  <Placeholder.Line />
-                  <Placeholder.Line />
-                </Placeholder.Header>
-                <Placeholder.Paragraph>
-                  <Placeholder.Line length='medium' />
-                  <Placeholder.Line length='short' />
-                </Placeholder.Paragraph>
-              </Placeholder>
-            </Segment>
-          </Grid.Column>
-
-          <Grid.Column>
-            <Segment raised>
-              <Placeholder>
-                <Placeholder.Header image>
-                  <Placeholder.Line />
-                  <Placeholder.Line />
-                </Placeholder.Header>
-                <Placeholder.Paragraph>
-                  <Placeholder.Line length='medium' />
-                  <Placeholder.Line length='short' />
-                </Placeholder.Paragraph>
-              </Placeholder>
-            </Segment>
-          </Grid.Column>
-
-          <Grid.Column>
-            <Segment raised>
-              <Placeholder>
-                <Placeholder.Header image>
-                  <Placeholder.Line />
-                  <Placeholder.Line />
-                </Placeholder.Header>
-                <Placeholder.Paragraph>
-                  <Placeholder.Line length='medium' />
-                  <Placeholder.Line length='short' />
-                </Placeholder.Paragraph>
-              </Placeholder>
-            </Segment>
-          </Grid.Column>
-        </Grid>
-      </div>
-    </div>
+    </Template>
   );
 };
 

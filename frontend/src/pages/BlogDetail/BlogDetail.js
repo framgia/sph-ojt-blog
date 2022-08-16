@@ -42,7 +42,7 @@ const BlogDetail = () => {
             </div>
             <div className="paragraph">
               <p
-                style={{ fontSize: "18px" }}
+                style={{ fontSize: "18px",  textAlign: "justify" }}
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />
             </div>
