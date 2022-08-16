@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Card } from "semantic-ui-react";
+
+import styles from "./styles.module.css";
+import Loader from "../../components/Loader/Loader";
 import { getDate } from "../../helpers/getDate";
 import { getTitle } from "../../helpers/getTitle";
 import { getContent } from "../../helpers/getContent";
-import Loader from "../../components/Loader/Loader";
-import { Card } from "semantic-ui-react";
-import styles from "./styles.module.css";
 
 const ListItem = ({ posts, loading }) => {
   if (loading) {
