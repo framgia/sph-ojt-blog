@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getDate } from "../../helpers/getDate";
 import { getTitle } from "../../helpers/getTitle";
 import { getContent } from "../../helpers/getContent";
-import Loader from "../Loader/Loader";
+import Loader from "../../components/Loader/Loader";
 import { Card } from "semantic-ui-react";
 import styles from "./styles.module.css";
 
