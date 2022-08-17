@@ -4,13 +4,13 @@ import './LogInPage.css';
 const Login = () => {
     
       return (
-        <div className="sign-up-form-content-right">
+        <div className="login-form">
           <div  className="signup-form" noValidate>
             <h1>Sign In</h1>
             <h2>Access your account</h2>
-            <div className="sign-up-form-inputs">
+            <div className="login-input">
               <input
-                className="sign-up-form-input"
+                className="login-text-input"
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -19,9 +19,9 @@ const Login = () => {
               />
               {/* {errors.email && <p>{errors.email}</p>} */}
             </div>
-            <div className="sign-up-form-inputs">
+            <div className="login-input">
               <input
-                className="sign-up-form-input"
+                className="login-text-input"
                 type="password"
                 name="password"
                 placeholder="Password"
@@ -35,14 +35,13 @@ const Login = () => {
               Show Password
             </button>
             <div>
-            <div className='ui hidden divider'></div>
-            <div className='ui hidden divider'></div>
-            <button className="sign-up-form-input-btn" type="submit">
+            <div className='ui hidden divider'/>
+            <button className="login-input-button" type="submit">
             Login
             </button>
             </div>
-            <div className='ui hidden divider'></div>
-            <span className="sign-up-form-input-login">
+            <div className='ui hidden divider'/>
+            <span className="input-login-form">
               Forgot Password? 
             </span>
           </div>
