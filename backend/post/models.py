@@ -23,7 +23,7 @@ class Post(models.Model):
     published_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ('published_at',)
+        ordering = ['-published_at']
 
     def save(self, *args, **kwargs):
         original_slug = slugify(self.title)
