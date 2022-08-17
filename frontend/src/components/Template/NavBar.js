@@ -4,10 +4,13 @@ import "./NavBar.css";
 import { Button, Modal } from "semantic-ui-react";
 import FormSignup from "../../pages/RegistrationPage/FormSignup";
 import FormSuccess from "../../pages/RegistrationPage/FormSuccess";
+ 
+import Login from "../../pages/LogInPage/LogInPage";
 
 const NavBar = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [openSignUp, setOpenSignUp] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
 
   function submitForm() {
     setIsSubmitted(true);
@@ -22,25 +25,27 @@ const NavBar = () => {
         <NavLink className="item" to={"/posts"}>
           All Blogs
         </NavLink>
+        
       </div>
 
       <div className="ui hidden divider"></div>
       <div>
         <Modal
-          onClose={() => setOpen(false)}
-          onOpen={() => setOpen(true)}
-          open={open}
+          onClose={() => setOpenSignUp(false)}
+          onOpen={() => setOpenSignUp(true)}
+          open={openSignUp}
           trigger={
             <Button className="signup-btn" color="red">
               Sign Up
             </Button>
+            
           }
           content={
             <div className="sign-up-form-container">
               <Button
                 className="close-btn"
                 basic
-                onClick={() => setOpen(false)}
+                onClick={() => setOpenSignUp(false)}
               >
                 X
               </Button>
@@ -57,9 +62,43 @@ const NavBar = () => {
                 <FormSuccess />
               )}
             </div>
+            
+          }
+        />
+        
+        <Modal
+          className="sign-up-button-display"
+          onClose={() => setOpenLogin(false)}
+          onOpen={() => setOpenLogin(true)}
+          open={openLogin}
+          trigger={
+            <Button className="login-btn" color="red">
+              Log In
+            </Button>
+          }
+          content={
+              <div className="sign-up-form-container">
+                <Button
+                  className="close-btn"
+                  basic
+                  onClick={() => setOpenLogin(false)}
+                >
+                  X
+                </Button>
+                <div className="sign-up-form-content-left">
+                  <img
+                    className="sign-up-form-img"
+                    src="Images/RegIm2.jpg"
+                    alt="Computer"
+                  />
+                </div>
+                <Login/>
+            </div>
+            
           }
         />
       </div>
+    
     </>
   );
 };
