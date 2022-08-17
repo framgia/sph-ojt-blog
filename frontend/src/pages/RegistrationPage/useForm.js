@@ -1,13 +1,11 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
 import API from "../../API";
-const base_url = 'http://127.0.0.1:8000/api/user/register'
 
 const useForm = (callback, validate) => {
   const [values, setValues] = useState({
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    email: "",
+    password: "",
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,13 +33,13 @@ const useForm = (callback, validate) => {
     // valuesFormData.append("email", values.email)
     // valuesFormData.append("password", values.password) 
 
-    try{
-      API.post("/user/register", valuesFormData).then((response)=>{
-        console.log(response.data)
-      })
-    }catch(error){
-      console.log(error);
-    }
+      API.post("/user/register", valuesFormData)
+        .then((response)=>{
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
   };
 
   useEffect(

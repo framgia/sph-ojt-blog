@@ -35,7 +35,7 @@ class PostDetailView(viewsets.ModelViewSet):
             raise ValidationError("This is not your post to delete")
 
 class CommentView(viewsets.ModelViewSet):
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = (permissions.AllowAny,)
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
