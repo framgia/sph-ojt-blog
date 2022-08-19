@@ -100,7 +100,7 @@ const NavBar = () => {
           onOpen={() => setOpenLogin(true)}
           open={openLogin}
           trigger={
-            <Button className="login-btn" color="red">
+            <Button className="login-btn" color="blue">
               Log In
             </Button>
           }
