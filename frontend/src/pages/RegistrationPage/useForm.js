@@ -28,12 +28,10 @@ const useForm = (validate) => {
 
       API.post("/user/register", valuesFormData)
         .then((response)=>{
-          console.log(response.data);
           setRegisterSuccess(true);
         })
         .catch((error) => {
           setErrors(validate(values, error.response.data));
-          console.log(error.response.data);
         })
   };
 

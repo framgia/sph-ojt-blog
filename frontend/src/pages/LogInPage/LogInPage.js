@@ -3,17 +3,11 @@ import './LogInPage.css';
 import useForm from './useForm';
 import validate from './validateLogin';
 
-const FormSuccess = () => {
-  return (
-    window.location.assign("/")
-  )
-};
-
 const Login = ( ) => {
-  const { handleChange, clickLogin, loginSuccess, values, errors } = useForm(
+  const { handleChange, clickLogin, values, errors } = useForm(
     validate
   );
-  return loginSuccess? <FormSuccess/>: (
+  return (
     <div className="login-form">
       <div  className="signup-form" noValidate>
         <h1>Sign In</h1>

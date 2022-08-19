@@ -8,7 +8,6 @@ const useForm = (validate) => {
     });
     
     const [errors, setErrors] = useState({});
-    const [loginSuccess, setLoginSuccess] = useState(false);
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -17,7 +16,6 @@ const useForm = (validate) => {
           [name]: value
         });
       };
-    
 
     const clickLogin = (e) => {
         e.preventDefault();
@@ -29,9 +27,10 @@ const useForm = (validate) => {
 
         API.post("/user/login", valuesFormData)
         .then((response) => {
-            console.log(response.data);
-            localStorage.setItem('token', API.get("/token/auth", response));
-            setLoginSuccess(true);
+          localStorage.setItem('token', `knox ${response.data.token}`);
+            API.defaults.headers.Authorization = `knox ${response.data.token}`;
+            console.log(response.data.token);
+            window.location.reload();
         })
         .catch((error) => {
             setErrors(validate(values, error.response.data));
@@ -39,7 +38,7 @@ const useForm = (validate) => {
           })
     };
 
-    return { clickLogin, handleChange, loginSuccess, values, errors };
+    return { clickLogin, handleChange, values, errors };
 };
 
 export default useForm;
