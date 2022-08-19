@@ -2,14 +2,14 @@ import React from 'react';
 import validate from './validateInfo';
 import useForm from './useForm';
 import './Form.css';
+import FormSuccess from './FormSuccess';
 
-const FormSignup = ({ submitForm }) => {
-  const { handleChange, handleSubmit, values, errors } = useForm(
-    submitForm,
+const FormSignup = () => {
+  const { handleChange, handleSubmit, registerSuccess, values, errors } = useForm(
     validate
   );
 
-  return (
+  return registerSuccess? <FormSuccess/> :(
     <div className='sign-up-form-content-right'>
       <form onSubmit={handleSubmit} className='signup-form' noValidate>
         <h1>
@@ -49,10 +49,10 @@ const FormSignup = ({ submitForm }) => {
           {errors.password && <p>{errors.password}</p>}
         </div>
         <button className='sign-up-form-input-btn' type='submit'>
-          Continue
+          Register
         </button>
         <span className='sign-up-form-input-login'>
-          Already have an account? <a href='#'>Login</a>
+          Already have an account? Please Login.
         </span>
       </form>
     </div>

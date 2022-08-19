@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 import { Button, Modal } from "semantic-ui-react";
@@ -11,9 +11,22 @@ const NavBar = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('token') !== null) {
+      setIsAuth(true);
+    }
+  }, []);
 
   function submitForm() {
     setIsSubmitted(true);
+  }
+
+  function clickLogOut(){
+    localStorage.clear();
+    setIsAuth(false);
+    window.location.assign("/");
   }
 
   return (
@@ -27,7 +40,22 @@ const NavBar = () => {
         </NavLink>
         
       </div>
-
+      {isAuth === true ? (
+          <Fragment>
+            {' '}
+            <li>
+              <div className="LogOut">
+              <Button 
+              className="logout-btn" 
+              color="red"
+              onClick={clickLogOut}>
+              Log Out
+            </Button>
+              </div>
+            </li>
+          </Fragment>
+        ) : (
+          <Fragment>
       <div className="ui hidden divider"></div>
       <div>
         <Modal
@@ -98,7 +126,9 @@ const NavBar = () => {
           }
         />
       </div>
-    
+      </Fragment>
+        )
+    }
     </>
   );
 };

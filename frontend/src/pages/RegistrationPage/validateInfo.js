@@ -1,4 +1,4 @@
-export default function validateInfo(values) {
+export default function validateInfo(values, response) {
     let errors = {};
   
     if (!values.username.trim()) {
@@ -13,6 +13,12 @@ export default function validateInfo(values) {
       errors.password = "Password is required";
     } else if (values.password.length < 6) {
       errors.password = "Password needs to be 6 characters or more";
+    } 
+    if(response.email == "This field must be unique."){
+      errors.email = "Email already exists."
+    } 
+    if(response.username == "A user with that username already exists."){
+      errors.username = "A user with that username already exists."
     }
     return errors;
   }

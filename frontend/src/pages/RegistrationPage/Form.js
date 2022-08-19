@@ -6,11 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Registration_Page = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  function submitForm() {
-    setIsSubmitted(true);
-  }
   const navigate = useNavigate();
   return (
     <>
@@ -22,11 +18,7 @@ const Registration_Page = () => {
         <div className="close-btn" onClick={() => navigate("/")}>
           X
         </div>
-        {!isSubmitted ? (
-          <FormSignup submitForm={submitForm} />
-        ) : (
-          <FormSuccess />
-        )}
+          <FormSignup />
       </div>
 
     </>

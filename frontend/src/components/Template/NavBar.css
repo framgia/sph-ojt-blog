@@ -75,3 +75,24 @@
   font-size: 1rem;
   text-align: start;
 }
+
+.logout-btn {
+  position: absolute;
+  right: 3%;
+  top: 3px;
+  width: 8%;
+  height: 32px;
+  border-radius: 10px;
+  padding-bottom: 5%;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  text-align: start;
+}
+
+.logout-btn:hover {
+  cursor: pointer;
+  background: rgb(212, 34, 34);
+  transition: all 0.4s ease-out;
+}
