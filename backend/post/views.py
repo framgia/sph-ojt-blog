@@ -5,16 +5,19 @@ from rest_framework.exceptions import ValidationError
 from .serializers import PostSerializer, CommentSerializer
 from .models import Post, Comment
 from .pagination import CustomPageNumberPagination
+from rest_framework import permissions
 
 
 # Create your views here.
 class PostView(viewsets.ModelViewSet):
+    permission_classes = (permissions.AllowAny,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     pagination_class = CustomPageNumberPagination
     lookup_field = 'slug'
 
 class PostDetailView(viewsets.ModelViewSet):
+    permission_classes = (permissions.AllowAny,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     lookup_field = 'slug'
@@ -32,6 +35,7 @@ class PostDetailView(viewsets.ModelViewSet):
             raise ValidationError("This is not your post to delete")
 
 class CommentView(viewsets.ModelViewSet):
+    permission_classes = (permissions.AllowAny,)
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 

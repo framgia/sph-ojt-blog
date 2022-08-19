@@ -1,14 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState } from "react";
+import API from "../../API";
 
-const useForm = (callback, validate) => {
+const useForm = (validate) => {
   const [values, setValues] = useState({
-    username: '',
-    email: '',
-    password: '',
-    password2: ''
+    username: "",
+    email: "",
+    password: "",
   });
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [registerSuccess, setRegisterSuccess]=useState(false);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -20,21 +20,22 @@ const useForm = (callback, validate) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    const valuesFormData={
+      username: values.username,
+      email: values.email,
+      password: values.password
+    };
 
-    setErrors(validate(values));
-    setIsSubmitting(true);
+      API.post("/user/register", valuesFormData)
+        .then((response)=>{
+          setRegisterSuccess(true);
+        })
+        .catch((error) => {
+          setErrors(validate(values, error.response.data));
+        })
   };
 
-  useEffect(
-    () => {
-      if (Object.keys(errors).length === 0 && isSubmitting) {
-        callback();
-      }
-    },
-    [errors]
-  );
-
-  return { handleChange, handleSubmit, values, errors };
+  return { handleChange, handleSubmit, registerSuccess, values, errors };
 };
 
 export default useForm;
